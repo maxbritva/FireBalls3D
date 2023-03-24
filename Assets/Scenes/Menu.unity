@@ -534,7 +534,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4470919861090968625, guid: d51ff2188494a8e4587a4ba203ba03fe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.6
+      value: -1.11
       objectReference: {fileID: 0}
     - target: {fileID: 4470919861090968625, guid: d51ff2188494a8e4587a4ba203ba03fe, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1078,33 +1078,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5a3a0b75f0687b43b0a2dc786734bc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scaleFrom: {x: 0.38172, y: 0.38172, z: 0.38172}
-  _scaleTo: {x: 0.438978, y: 0.438978, z: 0.438978}
-  _duration: 2.5
-  _scaleCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  _tweenData:
+    EndValue: {x: 0.419892, y: 0.419892, z: 0.419892}
+    Duration: 1.5
+    Ease: 0
 --- !u!1 &894112899
 GameObject:
   m_ObjectHideFlags: 0
@@ -1589,33 +1566,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5a3a0b75f0687b43b0a2dc786734bc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scaleFrom: {x: 1, y: 1, z: 1}
-  _scaleTo: {x: 1.1, y: 1.1, z: 1.1}
-  _duration: 2
-  _scaleCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  _tweenData:
+    EndValue: {x: 1.1, y: 1.1, z: 1.1}
+    Duration: 2
+    Ease: 0
 --- !u!1 &1281291047
 GameObject:
   m_ObjectHideFlags: 0
@@ -2289,33 +2243,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5a3a0b75f0687b43b0a2dc786734bc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scaleFrom: {x: 1, y: 1, z: 1}
-  _scaleTo: {x: 1.05, y: 1.05, z: 1.05}
-  _duration: 2
-  _scaleCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  _tweenData:
+    EndValue: {x: 1.1, y: 1.1, z: 1.1}
+    Duration: 2.5
+    Ease: 0
 --- !u!1 &1843878981
 GameObject:
   m_ObjectHideFlags: 0
@@ -2515,33 +2446,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5a3a0b75f0687b43b0a2dc786734bc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scaleFrom: {x: 1, y: 1, z: 1}
-  _scaleTo: {x: 1.17, y: 1.17, z: 1.17}
-  _duration: 1
-  _scaleCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  _tweenData:
+    EndValue: {x: 1.1, y: 1.1, z: 1.1}
+    Duration: 1
+    Ease: 2
 --- !u!43 &2096898664
 Mesh:
   m_ObjectHideFlags: 0
