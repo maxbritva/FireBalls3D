@@ -13,7 +13,7 @@ public class SizeAnimation : MonoBehaviour
   
 
    private void ApplyAnimation() =>
-      transform.DOScale(_tweenData.EndValue, _tweenData.Duration)
+      transform.DOScale(_tweenData.To, _tweenData.Duration)
          .SetEase(_tweenData.Ease)
          .SetLoops(-1, LoopType.Yoyo);
 }
