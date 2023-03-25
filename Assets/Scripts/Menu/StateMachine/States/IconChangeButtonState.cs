@@ -25,8 +25,8 @@ namespace Menu.StateMachine.States
 		{
 			_image.sprite = _icon;
 			_audioSource.PlayOneShot(_clickSound);
-			OnStateEnter();
 			_audioSource.mute = false;
+			OnStateEnter();
 		}
 
 		protected virtual void OnStateEnter(){}
