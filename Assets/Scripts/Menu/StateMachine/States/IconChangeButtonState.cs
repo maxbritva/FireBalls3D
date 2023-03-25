@@ -18,6 +18,7 @@ namespace Menu.StateMachine.States
 		{
 			_image = GetComponent<Image>();
 			_audioSource = GetComponent<AudioSource>();
+			_audioSource.mute = true;
 		}
 
 		public override void Enter()
@@ -25,13 +26,9 @@ namespace Menu.StateMachine.States
 			_image.sprite = _icon;
 			_audioSource.PlayOneShot(_clickSound);
 			OnStateEnter();
+			_audioSource.mute = false;
 		}
 
 		protected virtual void OnStateEnter(){}
-	}
-
-	public class ConfigureVolumeButtonState :IconChangeButtonState
-	{
-		
 	}
 }
