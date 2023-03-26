@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 13966, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: ArcticTemplate
+  m_EditorClassIdentifier: 
+  templateScene: {fileID: 102900000, guid: 3d74482e2dff4e74090747829c59dfb8, type: 3}
+  templateName: 
+  description: 
+  preview: {fileID: 0}
+  dependencies:
+  - dependency: {fileID: 2800000, guid: 3ea890d918117b643bc2fc00f17209ac, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 112000000, guid: 02a6f2b76a5910c4e9c338a59d550c7a, type: 2}
+    instantiationMode: 0
+  - dependency: {fileID: 2100000, guid: 135a7036ca1a07b4e9e162d80e6b6e77, type: 2}
+    instantiationMode: 1
+  - dependency: {fileID: 2800000, guid: f87d53fcaf34530488b706ee35d9b519, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 8900000, guid: c3736a50cb385c6418b721d92fa5414f, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 2100000, guid: 065e4860ee9cd5643a008cd72c27d1c1, type: 2}
+    instantiationMode: 1
+  - dependency: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+    instantiationMode: 1
+  - dependency: {fileID: 11400000, guid: 1b14936bceee5af42a62129510d9ed09, type: 2}
+    instantiationMode: 1
+  templatePipeline: {fileID: 0}
+  addToDefaults: 1
