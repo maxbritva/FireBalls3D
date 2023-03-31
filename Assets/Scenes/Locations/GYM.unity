@@ -4936,6 +4936,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1370744460097146570, guid: fdb2ab37d575d5e4a953796b73550496, type: 3}
+      propertyPath: _pool
+      value: 
+      objectReference: {fileID: 423779912}
+    - target: {fileID: 1370744460097146570, guid: fdb2ab37d575d5e4a953796b73550496, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1517224249}
+    - target: {fileID: 1370744460097146570, guid: fdb2ab37d575d5e4a953796b73550496, type: 3}
+      propertyPath: _playerInputHandler
+      value: 
+      objectReference: {fileID: 1517224250}
     - target: {fileID: 2942549272170683839, guid: fdb2ab37d575d5e4a953796b73550496, type: 3}
       propertyPath: m_Name
       value: 3SegmentObstacle
@@ -4946,7 +4958,7 @@ PrefabInstance:
       objectReference: {fileID: 1573612952}
     - target: {fileID: 6867057199332005053, guid: fdb2ab37d575d5e4a953796b73550496, type: 3}
       propertyPath: m_VersionIndex
-      value: 2957
+      value: 2966
       objectReference: {fileID: 0}
     - target: {fileID: 8589421345477204288, guid: fdb2ab37d575d5e4a953796b73550496, type: 3}
       propertyPath: m_Mesh
