@@ -19,12 +19,12 @@ namespace Pool
 			_pool.Request();
 
 		public void Return(T member) => _pool.Return(member);
-		
-		public void Enable() => 
-			enabled = true;
+
+		public void Enable() =>
+			gameObject.SetActive(true);
 		
 		public void Disable() => 
-			enabled = false;
+			gameObject.SetActive(false);
 		
 	}
 }

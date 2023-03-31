@@ -20,6 +20,8 @@ namespace PlayerComponents
 			_touchPanel.Holding -= Shoot;
 		}
 
+		public void Enable() => enabled = true;
+		public void Disable() => enabled = false;
 		private void Shoot(Touch touch) => _player.Shoot();
 	}
 }
