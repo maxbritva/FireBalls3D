@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1485623033e24489834e65992f8f947f, type: 3}
-  m_Name: ShootingPreferences
+  m_Script: {fileID: 11500000, guid: 63ab54c0ec34489ba45e2ba27d2c0b72, type: 3}
+  m_Name: ProjectileFactory
   m_EditorClassIdentifier: 
-  _projectileFactory: {fileID: 11400000, guid: 1f02f7786760eb745aa054d51a638f55, type: 2}
-  _projectileSpeed: 15
-  _fireRate: 4
+  _projectilePrefab: {fileID: 8906186277865807275, guid: 596edb43c8b176d498dddb112ea1110f, type: 3}
