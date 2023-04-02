@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityObject = UnityEngine.Object;
 
 namespace Towers.Disassembling
@@ -14,8 +15,15 @@ namespace Towers.Disassembling
 			_towerRoot = towerRoot;
 		}
 
-		public void RemoveBottom()
+		public event Action Disassembled;
+		public void TryRemoveBottom()
 		{
+			if (_tower.SegmentCount == 0)
+			{
+				Disassembled?.Invoke();
+				return;
+			}
+
 			TowerSegment segment = _tower.RemoveBottom();
 			Vector3 segmentScale = segment.transform.localScale;
 			_towerRoot.position -= Vector3.up * segmentScale.y;
