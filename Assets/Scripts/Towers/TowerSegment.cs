@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-namespace TowerGeneration
+namespace Towers
 {
 	public class TowerSegment : MonoBehaviour
 	{
