@@ -2,6 +2,7 @@
 using System.Data;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Threading.Tasks;
 using DG.Tweening;
 using TweenStructures;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace Towers.Generation
 	public class TowerGenerator : MonoBehaviour
 	{
 		[SerializeField] private UnityObject _towerFactory;
-		[SerializeField] private Transform _tower;
+		[SerializeField] private Transform _towerRoot;
 		[SerializeField] private Vector3TweenData _rotationData;
 
 		private IAsyncTowerFactory TowerFactory => (IAsyncTowerFactory)_towerFactory;
@@ -31,14 +32,14 @@ namespace Towers.Generation
 			_cancellationTokenSource.Cancel();
 
 		[ContextMenu(nameof(Generate))]
-		public async void Generate()
+		public async Task<Tower> Generate()
 		{
 			ApplyRotation(_rotationData);
-			await TowerFactory.CreateAsync(_tower, _cancellationTokenSource.Token);
+			return await TowerFactory.CreateAsync(_towerRoot, _cancellationTokenSource.Token);
 		}
 
 		private void ApplyRotation(Vector3TweenData rotationData) =>
-			_tower
+			_towerRoot
 				.DORotate(rotationData.To, rotationData.Duration, RotateMode.FastBeyond360)
 				.SetEase(rotationData.Ease);
 	}

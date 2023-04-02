@@ -11,5 +11,7 @@ namespace Towers
 		{
 			_segments = segments;
 		}
+
+		public TowerSegment RemoveBottom() => _segments.Dequeue();
 	}
 }
