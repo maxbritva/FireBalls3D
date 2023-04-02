@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Towers
 {
@@ -11,8 +12,13 @@ namespace Towers
 		{
 			_segments = segments;
 		}
+		
 
 		public int SegmentCount => _segments.Count;
-		public TowerSegment RemoveBottom() => _segments.Dequeue();
+		public TowerSegment RemoveBottom()
+		{
+			TowerSegment segment = _segments.Dequeue();
+			return segment;
+		}
 	}
 }
