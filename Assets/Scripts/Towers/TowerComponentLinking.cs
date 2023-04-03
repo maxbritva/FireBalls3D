@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Shooting.Pool;
+using Structures.ReactiveProperties;
 using Towers.Disassembling;
 using Towers.Generation;
 using UI.Tower;
@@ -17,6 +18,7 @@ namespace Towers
 
 		private TowerDisassembling _disassembling;
 		private Tower _tower;
+		private IReadonlyReactiveProperty<int> _towerSegmentCount = new FakeReactiveProperty<int>();
 
 		[ContextMenu(nameof(Prepare))]
 		public async Task Prepare()
@@ -24,12 +26,15 @@ namespace Towers
 			_tower = await _generator.Generate();
 			_disassembling = new TowerDisassembling(_tower, _towerRoot);
 			_projectileHitTrigger.ProjectileReturned += _disassembling.TryRemoveBottom;
+			_towerSegmentCount = _tower.SegmentCount;
+			_towerSegmentCount.Subscribe(_segmentsLeftText.UpdateTextValue);
 		}
 
 		private void OnDisable()
 		{
 			if(_disassembling != null)
 				_projectileHitTrigger.ProjectileReturned -= _disassembling.TryRemoveBottom;
+			_towerSegmentCount.Unsubscribe(_segmentsLeftText.UpdateTextValue);
 		}
 	}
 }
