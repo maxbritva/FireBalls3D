@@ -1,35 +1,50 @@
-﻿using System.Threading;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
-using DG.Tweening;
-using TweenStructures;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 
 namespace Towers.Generation
 {
-	public class TowerGenerator : MonoBehaviour
+	public class TowerGenerator : IAsyncTowerGenerator, ITowerSegmentCreationCallback, IDisposable
 	{
-		[SerializeField] private TowerFactorySo _towerFactory;
-		[SerializeField] private Transform _towerRoot;
-		[SerializeField] private Vector3TweenData _rotationData;
-
+		private readonly TowerStructureSo _structure;
 		private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
 
-		public ITowerSegmentCreationCallback CreationCallback => _towerFactory;
-
-		private void OnDisable() => 
-			_cancellationTokenSource.Cancel();
-
-		[ContextMenu(nameof(Generate))]
-		public async Task<Tower> Generate()
+		public TowerGenerator(TowerStructureSo structure)
 		{
-			ApplyRotation(_rotationData);
-			return await _towerFactory.CreateAsync(_towerRoot, _cancellationTokenSource.Token);
+			_structure = structure;
 		}
-
-		private void ApplyRotation(Vector3TweenData rotationData) =>
-			_towerRoot
-				.DORotate(rotationData.To, rotationData.Duration, RotateMode.FastBeyond360)
-				.SetEase(rotationData.Ease);
+		public event Action<int> SegmentCreated;
+		
+		public async Task<Tower> CreateAsync(Transform tower) => 
+			await CreateAsync(tower, _cancellationTokenSource.Token);
+		
+		public void Dispose() => 
+			_cancellationTokenSource.Cancel();
+		private async Task<Tower> CreateAsync(Transform tower, CancellationToken cancellationToken)
+		{
+			Vector3 position = tower.position;
+			int segmentCount = _structure.SegmentCount;
+			var segments = new Queue<TowerSegment>(segmentCount);
+			for (int i = 0; i < segmentCount; i++)
+			{
+				if (cancellationToken.IsCancellationRequested)
+					break;
+				TowerSegment segment = _structure.CreateSegment(tower, position, i);
+				segments.Enqueue(segment);
+				position = GetNextPositionAfter(segment.transform, position);
+				SegmentCreated?.Invoke(i +1);
+				await Task.Delay(_structure.SpawnTimePerSegmentMilliseconds, cancellationToken);
+			}
+			return new Tower(segments);
+		}
+		private Vector3 GetNextPositionAfter(Transform segment, Vector3 currentPosition)
+		{
+			float segmentHeight = segment.localScale.y;
+			return currentPosition + Vector3.up * segmentHeight;
+		}
+	
 	}
 }
