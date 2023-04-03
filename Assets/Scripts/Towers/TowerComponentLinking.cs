@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Shooting.Pool;
 using Structures.ReactiveProperties;
 using Towers.Disassembling;
+using Towers.Effects;
 using Towers.Generation;
 using UI.Tower;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace Towers
 		[SerializeField] private TowerGenerator _generator;
 		[SerializeField] private RestoreProjectilePoolTrigger _projectileHitTrigger;
 		[SerializeField] private TowerSegmentsLeftText _segmentsLeftText;
+		[SerializeField] private TowerAudio _towerAudio;
 
 		private TowerDisassembling _disassembling;
 		private Tower _tower;
@@ -29,6 +31,7 @@ namespace Towers
 			_projectileHitTrigger.ProjectileReturned += _disassembling.TryRemoveBottom;
 			_towerSegmentCount = _tower.SegmentCount;
 			_towerSegmentCount.Subscribe(_segmentsLeftText.UpdateTextValue);
+			_towerSegmentCount.Subscribe(_towerAudio.PlaySound);
 		}
 
 		private void OnDisable()
@@ -37,6 +40,7 @@ namespace Towers
 				_projectileHitTrigger.ProjectileReturned -= _disassembling.TryRemoveBottom;
 			_towerSegmentCount.Unsubscribe(_segmentsLeftText.UpdateTextValue);
 			_generator.CreationCallback.SegmentCreated -= _segmentsLeftText.UpdateTextValue;
+			_towerSegmentCount.Unsubscribe(_towerAudio.PlaySound);
 		}
 	}
 }
