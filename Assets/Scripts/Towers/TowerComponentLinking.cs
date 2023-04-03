@@ -23,6 +23,7 @@ namespace Towers
 		[ContextMenu(nameof(Prepare))]
 		public async Task Prepare()
 		{
+			_generator.CreationCallback.SegmentCreated += _segmentsLeftText.UpdateTextValue;
 			_tower = await _generator.Generate();
 			_disassembling = new TowerDisassembling(_tower, _towerRoot);
 			_projectileHitTrigger.ProjectileReturned += _disassembling.TryRemoveBottom;
@@ -35,6 +36,7 @@ namespace Towers
 			if(_disassembling != null)
 				_projectileHitTrigger.ProjectileReturned -= _disassembling.TryRemoveBottom;
 			_towerSegmentCount.Unsubscribe(_segmentsLeftText.UpdateTextValue);
+			_generator.CreationCallback.SegmentCreated -= _segmentsLeftText.UpdateTextValue;
 		}
 	}
 }

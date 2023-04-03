@@ -4,6 +4,6 @@ namespace Towers.Generation
 {
 	public interface ITowerSegmentCreationCallback
 	{
-		event Action SegmentCreated;
+		event Action<int> SegmentCreated;
 	}
 }
