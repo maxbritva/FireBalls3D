@@ -8,7 +8,7 @@ using Towers;
 namespace Towers.Generation
 {
 	[CreateAssetMenu(fileName = "TowerFactory", menuName = "ScriptableObjects/Tower/TowerFactory")]
-	public class TowerFactorySo : ScriptableObject, IAsyncTowerFactory
+	public class TowerFactorySo : ScriptableObject, IAsyncTowerFactory, ITowerSegmentCreationCallback
 	{
 		[SerializeField] private TowerSegment _segmentPrefab;
 		[Space]
@@ -17,6 +17,8 @@ namespace Towers.Generation
 		[SerializeField] [Min(0.0f)] private float _spawnTimePerSegment;
 
 		[Space] [SerializeField] private Material[] _materials = Array.Empty<Material>();
+		
+		public event Action SegmentCreated;
 
 		private int SpawnTimePerSegmentMilliseconds => (int)(_spawnTimePerSegment * 1000);
 		
@@ -31,6 +33,7 @@ namespace Towers.Generation
 				TowerSegment segment = CreateSegment(tower, position, i);
 				segments.Enqueue(segment);
 				position = GetNextPositionAfter(segment.transform, position);
+				SegmentCreated?.Invoke();
 				await Task.Delay(SpawnTimePerSegmentMilliseconds, cancellationToken);
 			}
 
@@ -55,5 +58,7 @@ namespace Towers.Generation
 			int index = numberOfInstance % _materials.Length;
 			return _materials[index];
 		}
+
+		
 	}
 }
