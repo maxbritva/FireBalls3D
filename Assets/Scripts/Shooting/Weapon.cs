@@ -18,6 +18,6 @@ namespace Shooting
 
 		public void Shoot() =>
 			_pool.Request()
-				.Shoot(_shootPoint.position, _shootPoint.forward, _projectileSpeed);
+				.Shoot(_shootPoint.position, _shootPoint.forward *-1, _projectileSpeed);
 	}
 }
