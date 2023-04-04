@@ -8,17 +8,25 @@ using UnityEngine;
 
 namespace Obstacles
 {
+	[System.Serializable]
+	public struct ObstacleCollisionFeedback
+	{
+		public Transform Player;
+		public PlayerInputHandler PlayerInputHandler;
+		public ProjectilePool PlayerProjectilePool;
+	}
+
 	public class ObstacleCollision : MonoBehaviour
 	{
-		[SerializeField] private ProjectilePool _pool;
-
-		[SerializeField] private PlayerInputHandler _playerInputHandler;
-		[SerializeField] private Transform _player;
-
 		[SerializeField] private ProjectileFactory _projectileFactory;
 		[SerializeField] private DirectionalBouncePreferencesSo _directionalBouncePreferencesSo;
 
 		private bool _hasAlreadyCollided;
+		private  ObstacleCollisionFeedback _obstacleCollisionFeedback;
+
+		public void Initialize(ObstacleCollisionFeedback feedback) => 
+			_obstacleCollisionFeedback = feedback;
+
 		private void OnCollisionEnter(Collision other)
 		{
 			if (other.gameObject.TryGetComponent(out Projectile projectile) == false)
@@ -27,15 +35,15 @@ namespace Obstacles
 			if(_hasAlreadyCollided)
 				return;
 			_hasAlreadyCollided = true;
-			
-			_pool.Return(projectile);
-			_playerInputHandler.Disable();
-			_pool.Disable();
+
+			_obstacleCollisionFeedback.PlayerProjectilePool.Return(projectile);
+			_obstacleCollisionFeedback.PlayerInputHandler.Disable();
+			_obstacleCollisionFeedback.PlayerProjectilePool.Disable();
 			Vector3 hitPoint = other.contacts[0].point;
 			Projectile playerHitProjectile = _projectileFactory.Create();
 
 			new DirectionalBounce(playerHitProjectile.transform, new CoroutineExecutor(playerHitProjectile),
-				_directionalBouncePreferencesSo.Value).BounceTo(_player.position, hitPoint);
+				_directionalBouncePreferencesSo.Value).BounceTo(_obstacleCollisionFeedback.Player.position, hitPoint);
 		}
 	}
 }
