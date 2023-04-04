@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Structures.ReactiveProperties;
 
-namespace Towers
+namespace Paths.Builders
 {
 	public class Tower
 	{

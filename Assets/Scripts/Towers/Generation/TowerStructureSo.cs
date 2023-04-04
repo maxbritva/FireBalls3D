@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using System.Threading.Tasks;
-using Towers;
+using Paths.Builders;
 
-namespace Towers.Generation
+namespace Paths.Builders.Generation
 {
 	[CreateAssetMenu(fileName = "TowerStructure", menuName = "ScriptableObjects/Tower/TowerStructure")]
 	public class TowerStructureSo : ScriptableObject

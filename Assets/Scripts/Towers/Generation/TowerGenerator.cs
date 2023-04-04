@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 
-namespace Towers.Generation
+namespace Paths.Builders.Generation
 {
 	public class TowerGenerator : IAsyncTowerGenerator, ITowerSegmentCreationCallback, IDisposable
 	{

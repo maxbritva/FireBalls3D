@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 
-namespace Towers.Disassembling
+namespace Paths.Builders.Disassembling
 {
 	public class TowerDisassembling
 	{
@@ -19,15 +19,14 @@ namespace Towers.Disassembling
 		public void TryRemoveBottom()
 		{
 			if (_tower.SegmentCount.Value == 0)
-			{
-				Disassembled?.Invoke();
 				return;
-			}
 
 			TowerSegment segment = _tower.RemoveBottom();
 			Vector3 segmentScale = segment.transform.localScale;
 			_towerRoot.position -= Vector3.up * segmentScale.y;
 			UnityObject.Destroy(segment.gameObject);
+			if (_tower.SegmentCount.Value == 0)
+				Disassembled?.Invoke();
 		}
 	}
 }

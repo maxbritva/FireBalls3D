@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Towers.Generation
+namespace Paths.Builders.Generation
 {
 	public interface ITowerSegmentCreationCallback
 	{

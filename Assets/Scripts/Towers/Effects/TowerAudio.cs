@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Towers.Effects
+namespace Paths.Builders.Effects
 {
 	[RequireComponent(typeof(AudioSource))]
 	public class TowerAudio : MonoBehaviour

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Towers.Generation
+namespace Paths.Builders.Generation
 {
 	public interface IAsyncTowerGenerator
 	{
