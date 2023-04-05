@@ -1,9 +1,8 @@
 ﻿using Coroutines;
 using Physics;
-using PlayerComponents;
+using Players;
 using Shooting;
 using Shooting.Pool;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Obstacles
