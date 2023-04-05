@@ -13,8 +13,9 @@ namespace Players
 		[SerializeField] private Transform _player;
 		
 
-		public void StartMovingOn(Path path)
+		public void StartMovingOn(Path path, Vector3 initialPosition)
 		{
+			_player.position = initialPosition;
 			new PlayerPathFollowing( new  PathFollowing(_player, path, _movePreferences), path, _inputHandler)
 				.StartMovingAsync();
 		}
