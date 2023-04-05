@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Obstacles;
 using Obstacles.Disappearing;
-using Paths.Builders.Disassembling;
+using Towers.Disassembling;
 using UnityEngine;
 
 namespace Paths.Builders

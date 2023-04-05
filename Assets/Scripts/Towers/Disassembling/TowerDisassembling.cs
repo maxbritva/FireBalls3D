@@ -1,8 +1,9 @@
 ﻿using System;
+using Paths.Builders;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 
-namespace Paths.Builders.Disassembling
+namespace Towers.Disassembling
 {
 	public class TowerDisassembling
 	{
@@ -14,13 +15,11 @@ namespace Paths.Builders.Disassembling
 			_tower = tower;
 			_towerRoot = towerRoot;
 		}
-
 		public event Action Disassembled;
 		public void TryRemoveBottom()
 		{
 			if (_tower.SegmentCount.Value == 0)
 				return;
-
 			TowerSegment segment = _tower.RemoveBottom();
 			Vector3 segmentScale = segment.transform.localScale;
 			_towerRoot.position -= Vector3.up * segmentScale.y;
@@ -28,5 +27,8 @@ namespace Paths.Builders.Disassembling
 			if (_tower.SegmentCount.Value == 0)
 				Disassembled?.Invoke();
 		}
+
+		public TowerDisassemblingAwaiter GetAwaiter() => 
+			new TowerDisassemblingAwaiter(this);
 	}
 }

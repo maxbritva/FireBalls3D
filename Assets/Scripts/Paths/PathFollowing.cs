@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
@@ -7,12 +7,12 @@ namespace Paths
 {
 	public class PathFollowing
 	{
-		private readonly MonoBehaviour _follower;
+		private readonly Transform _follower;
 		private readonly Path _path;
 		private readonly MovePreferencesSo _preferences;
 		private int _pathSegmentIndex;
 
-		public PathFollowing(MonoBehaviour follower, Path path, MovePreferencesSo preferences)
+		public PathFollowing(Transform follower, Path path, MovePreferencesSo preferences)
 		{
 			_follower = follower;
 			_path = path;
@@ -20,34 +20,33 @@ namespace Paths
 		}
 
 		
-		public void MoveToNext()
+		public async Task MoveToNextAsync()
 		{
 			if(_pathSegmentIndex >=_path.Segments.Count)
 				return;
 			PathSegment segment = _path.Segments[_pathSegmentIndex];
 			Transform[] waypoints = segment.WayPoints;
-
-			_follower.StartCoroutine(MoveBetween(waypoints));
+			await MoveBetweenAsync(_follower, waypoints);
 		}
 
-		private IEnumerator MoveBetween(IReadOnlyList<Transform> waypoints)
+		private async  Task MoveBetweenAsync (Transform follower ,IReadOnlyList<Transform> waypoints)
 		{
 			int index = 1;
-			 Transform followerTransform = _follower.transform;
 			while (index < waypoints.Count)
 			{
 				Vector3 position = waypoints[index].position;
 
-				followerTransform
+			Task lookAt = follower
 					.DOLookAt(position, _preferences.RotateDuration)
-					.OnComplete(() =>
-						followerTransform
-							.DOMove(position, _preferences.DurationPerWaypoint));
+					.AsyncWaitForCompletion();
+			
+				Task move = follower
+					.DOMove(position, _preferences.DurationPerWaypoint)
+					.AsyncWaitForCompletion();
 
-				yield return new WaitForSeconds(_preferences.TotalDuration);
+				await Task.WhenAll(lookAt, move);
 				index++;
 			}
-
 			_pathSegmentIndex++;
 		}
 	}
