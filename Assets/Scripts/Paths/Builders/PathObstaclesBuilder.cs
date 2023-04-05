@@ -13,7 +13,7 @@ namespace Paths.Builders
 		[SerializeField] private LocalMoveTweenSo _disappearAnimation;
 		
 		private IReadOnlyList<Obstacle> _obstaclesPrefab;
-		private void Initialize(IReadOnlyList<Obstacle> obstaclesPrefab) => 
+		public void Initialize(IReadOnlyList<Obstacle> obstaclesPrefab) => 
 			_obstaclesPrefab = obstaclesPrefab;
 		public ObstacleDisappearing  Build(ObstacleCollisionFeedback feedback)
 		{
