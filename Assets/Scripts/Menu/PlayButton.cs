@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using GameStates.Base;
+using GameStates.States;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Menu
@@ -8,18 +8,14 @@ namespace Menu
 	[RequireComponent(typeof(Button))]
 	public class PlayButton : MonoBehaviour
 	{
-		[SerializeField] private string _levelSceneName  = "Tropic1";
+		[SerializeField] private GameStatesMachineSo _stateMachine;
 
 		private void Start()
 		{
 			Button button = GetComponent<Button>();
-			button.onClick.AddListener(LoadLevel);
+			button.onClick.AddListener(_stateMachine.Enter<LevelEntryStateSo>);
 		}
 
-		private async void LoadLevel()
-		{
-			SceneManager.LoadScene(_levelSceneName);
-			await Task.Delay(3000);
-		}
+		
 	}
 }
