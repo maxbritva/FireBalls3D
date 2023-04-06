@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Obstacles;
 using Paths;
 using Paths.Builders;
@@ -11,6 +10,7 @@ namespace Levels.Generation
 	public class LevelStructureSo : ScriptableObject
 	{
 		[SerializeField] private Path _pathPrefab;
+		[Header("list")]
 		[SerializeField] private List<PathPlatformStructure> _platforms = new List<PathPlatformStructure>();
 
 		private void OnValidate()
