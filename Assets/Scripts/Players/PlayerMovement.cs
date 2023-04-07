@@ -1,4 +1,5 @@
-﻿using Paths;
+﻿using System.Threading;
+using Paths;
 using UnityEngine;
 
 namespace Players
@@ -13,11 +14,11 @@ namespace Players
 		[SerializeField] private Transform _player;
 		
 
-		public void StartMovingOn(Path path, Vector3 initialPosition)
+		public void StartMovingOn(Path path, Vector3 initialPosition, CancellationTokenSource cancellationTokenSource)
 		{
 			_player.position = initialPosition;
 			new PlayerPathFollowing( new  PathFollowing(_player, path, _movePreferences), path, _inputHandler)
-				.StartMovingAsync();
+				.StartMovingAsync(cancellationTokenSource.Token);
 		}
 	}
 }

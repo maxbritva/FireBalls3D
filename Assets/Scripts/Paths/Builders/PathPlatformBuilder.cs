@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using Obstacles;
 using Obstacles.Disappearing;
 using Towers.Disassembling;
@@ -12,16 +13,20 @@ namespace Paths.Builders
 		[SerializeField] private PathObstaclesBuilder _obstacleBuilder;
 
 		private ObstacleCollisionFeedback _feedback;
-		public void Initialize(PathPlatformStructure pathPlatformStructure ,ObstacleCollisionFeedback collisionFeedback)
+		private CancellationTokenSource _cancellationTokenSource;
+		public void Initialize(PathPlatformStructure pathPlatformStructure ,ObstacleCollisionFeedback collisionFeedback, CancellationTokenSource cancellationTokenSource)
 		{
 			_towerBuilder.Initialize(pathPlatformStructure.TowerStructure);
 			_obstacleBuilder.Initialize(pathPlatformStructure.Obstacles);
 			_feedback = collisionFeedback;
+			_cancellationTokenSource = cancellationTokenSource;
 		}
 
 		public async Task<(TowerDisassembling, ObstacleDisappearing)> BuildAsync()
 		{
-			TowerDisassembling disassembling = await _towerBuilder.BuildAsync(_feedback.PlayerProjectilePool);
+			TowerDisassembling disassembling = await _towerBuilder.BuildAsync(_feedback.PlayerProjectilePool, _cancellationTokenSource.Token);
+			if (_cancellationTokenSource.IsCancellationRequested)
+				return (disassembling, null);
 			ObstacleDisappearing disappearing = _obstacleBuilder.Build(_feedback);
 			return (disassembling, disappearing);
 		}
