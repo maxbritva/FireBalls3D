@@ -1,5 +1,4 @@
-﻿using UnityEditor.PackageManager.Requests;
-
+﻿
 namespace Pool
 {
 	public interface IPool<T>

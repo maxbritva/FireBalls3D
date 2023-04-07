@@ -5,11 +5,8 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: caf14cf714cfc63419d68c9e448d7577
-  - enabled: 1
-    path: Assets/Scenes/Locations/Tropic1.unity
-    guid: b44e3f709c2dd4c4b88b08563738acac
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: cfc7eb13cd77aad4790d5de0e26db791, type: 2}

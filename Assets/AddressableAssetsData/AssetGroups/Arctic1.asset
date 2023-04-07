@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Arctic1
+  m_EditorClassIdentifier: 
+  m_GroupName: Arctic1
+  m_Data:
+    m_SerializedData: []
+  m_GUID: e4e3c84e3556f9243bab98f95b819a64
+  m_SerializeEntries:
+  - m_GUID: dd4d3d2cc16fcd1458e56db222df61ae
+    m_Address: Arctic1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 79f9a634c7e09aa42a2b9ada549d8da6, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 1f8e012adfb112640a032140ef24d07a, type: 2}
+    - {fileID: 11400000, guid: 17c2f5b2260db99499b3442861dd22dd, type: 2}

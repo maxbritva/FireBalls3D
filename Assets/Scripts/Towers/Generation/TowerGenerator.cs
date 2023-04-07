@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Paths.Builders;
+using Paths.Builders.Generation;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 
-namespace Paths.Builders.Generation
+namespace Towers.Generation
 {
 	public class TowerGenerator : IAsyncTowerGenerator, ITowerSegmentCreationCallback, IDisposable
 	{
