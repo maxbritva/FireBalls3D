@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f30700f5d5742f89ee64cc873740b16, type: 3}
   m_Name: PathStructureContainer
   m_EditorClassIdentifier: 
-  PathStructure: {fileID: 0}
+  PathStructure: {fileID: 11400000, guid: 7bfa8ad16e48adc4fa1555158194a6ff, type: 2}

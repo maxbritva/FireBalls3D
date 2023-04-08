@@ -16,3 +16,4 @@ MonoBehaviour:
     Name: PlayerGeneratedPath
     LoadMode: 1
   _levelProvider: {fileID: 11400000, guid: 1851b9ec63240e240b247832dfbec2a7, type: 2}
+  _pathStructureContainer: {fileID: 11400000, guid: 9e7ef0f078534284bad4b3c5970bfb78, type: 2}
