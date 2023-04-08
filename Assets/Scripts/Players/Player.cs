@@ -1,4 +1,5 @@
-﻿using Characters;
+﻿using System;
+using Characters;
 using Paths;
 using Shooting;
 using Shooting.Pool;
@@ -10,15 +11,15 @@ namespace Players
 	{
 		[Header("Character")]
 		[SerializeField] private CharacterContainerSo _characterContainer;
-		
-	
-		
+
 		[Header("Shooting")]
 		[SerializeField] private ShootingPreferencesSo _shootingPreferences;
 		[SerializeField] private ProjectilePool _projectilePool;
 
 		private FireRate _fireRate;
 		private Weapon _weapon;
+
+		public event Action Died;
 
 		private void Start()
 		{
@@ -31,5 +32,11 @@ namespace Players
 
 		public void Shoot() => 
 			_fireRate.Shoot(_weapon);
+
+		private void OnTriggerEnter(Collider other)
+		{
+			if(other.TryGetComponent(out Projectile _))
+				Died?.Invoke();
+		}
 	}
 }
