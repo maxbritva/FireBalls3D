@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca5faaeb048f4f8082713b838211ca4e, type: 3}
-  m_Name: LevelEntryState
+  m_Script: {fileID: 11500000, guid: 1f6b4a94ef614948a1e2ed68e5261419, type: 3}
+  m_Name: LevelColors
   m_EditorClassIdentifier: 
-  _playerGeneratedPathScene:
-    Name: PlayerGeneratedPath
-    LoadMode: 1
-  _levelProvider: {fileID: 11400000, guid: 1851b9ec63240e240b247832dfbec2a7, type: 2}
+  _passedLevels: {r: 1, g: 1, b: 1, a: 1}
+  _nextLevels: {r: 0, g: 1, b: 0, a: 1}

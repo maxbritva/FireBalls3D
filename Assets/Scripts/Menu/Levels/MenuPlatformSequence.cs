@@ -25,9 +25,9 @@ namespace Menu.Levels
 
 		private void Start()
 		{
-			Transform markerHolder = _levels[NextLevelNumber - 1].MarkerHolder;
+			Transform markerHolder = _levels[NextLevelNumber -1].MarkerHolder;
 			_levelMarker.InstantiateAsync(markerHolder);
-			for (int i = 0; i < NextLevelNumber-1; i++) 
+			for (int i = 0; i < NextLevelNumber -1; i++) 
 				_levels[i].PaintNumber(_levelColors.PassedLevels);
 			for (int i = NextLevelNumber; i < _levels.Length; i++) 
 				_levels[i].PaintNumber(_levelColors.NextLevels);

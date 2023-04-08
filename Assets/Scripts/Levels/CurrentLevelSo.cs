@@ -12,6 +12,6 @@ namespace Levels
 		public Level Current => _storage.Levels[_levelNumber.Value -1];
 		
 		public void ChangeToNextLevel() => 
-			_levelNumber.Value = Mathf.Clamp(_levelNumber.Value + 1, 0, _storage.Levels.Count);
+			_levelNumber.Value = Mathf.Clamp(_levelNumber.Value + 1, 1, _storage.Levels.Count);
 	}
 }

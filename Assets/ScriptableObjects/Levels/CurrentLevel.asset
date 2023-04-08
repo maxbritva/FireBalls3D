@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 198f08c03da6457eb4e4a58824b1c1ed, type: 3}
-  m_Name: (1)LevelStructure
+  m_Script: {fileID: 11500000, guid: 670ec44fe7814c94adf88bfe6fb8164f, type: 3}
+  m_Name: CurrentLevel
   m_EditorClassIdentifier: 
-  _pathPrefab: {fileID: 2887156429166698606, guid: 275326651d620e348bd7fccd6fba4a1f, type: 3}
+  _storage: {fileID: 11400000, guid: b6769d6f99b161742968005f62a27e2c, type: 2}
+  _levelNumber: {fileID: 11400000, guid: ca2aaba20f01f514e8b11243618435c3, type: 2}

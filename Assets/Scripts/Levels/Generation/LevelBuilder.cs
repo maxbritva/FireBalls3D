@@ -11,7 +11,7 @@ namespace Levels.Generation
 	{
 		[Header("Path")]
 		[SerializeField] private Transform _pathRoot;
-		[SerializeField] private PathStructureSo _structure;
+		[SerializeField] private PathStructureContainerSo _structureContainer;
 
 		[Header("Player")] 
 		[SerializeField] private PlayerMovement _playerMovement;
@@ -26,7 +26,7 @@ namespace Levels.Generation
 
 		private void Build()
 		{
-			Path path = _structure.CreatePath(_pathRoot, _obstacleCollisionFeedback, _cancellationTokenSource);
+			Path path = _structureContainer.PathStructure.CreatePath(_pathRoot, _obstacleCollisionFeedback, _cancellationTokenSource);
 			Vector3 initialPosition = path.Segments[0].WayPoints[0].position;
 			_playerMovement.StartMovingOn(path, initialPosition, _cancellationTokenSource);
 		}

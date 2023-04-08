@@ -11,8 +11,8 @@ namespace Levels.Generation
 	public class PathStructureSo : ScriptableObject
 	{
 		[SerializeField] private Path _pathPrefab;
-		[Header("list")]
 		[SerializeField] private List<PathPlatformStructure> _platforms = new List<PathPlatformStructure>();
+		
 
 		private void OnValidate()
 		{
