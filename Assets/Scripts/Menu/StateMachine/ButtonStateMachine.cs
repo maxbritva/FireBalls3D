@@ -7,6 +7,7 @@ namespace Menu.StateMachine
 	public class ButtonStateMachine : MonoBehaviour
 	{
 		[SerializeField] private MonoState[] _states = Array.Empty<MonoState>();
+		[SerializeField] private string _key;
 		private int _currentStateIndex;
 
 		private void Start()
@@ -18,6 +19,7 @@ namespace Menu.StateMachine
 		{
 			_currentStateIndex = GetNextStateIndex(_currentStateIndex);
 			_states[_currentStateIndex].Enter();
+			PlayerPrefs.SetInt(_key, _currentStateIndex);
 		}
 
 		private void Initialize()
@@ -27,7 +29,7 @@ namespace Menu.StateMachine
 				enabled = false;
 				throw new Exception("States should have any states");
 			}
-			_currentStateIndex = 0;
+			_currentStateIndex = PlayerPrefs.GetInt(_key,0);
 			_states[_currentStateIndex].Enter();
 		}
 
